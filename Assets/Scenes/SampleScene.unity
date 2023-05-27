@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 200482868}
   - component: {fileID: 200482869}
   - component: {fileID: 200482870}
+  - component: {fileID: 200482871}
   m_Layer: 0
   m_Name: fish_1
   m_TagString: Untagged
@@ -260,6 +261,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+--- !u!95 &200482871
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200482865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0cf05f39b9dfecc4bab84a52c86ec70a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +518,7 @@ GameObject:
   - component: {fileID: 1781874634}
   - component: {fileID: 1781874633}
   - component: {fileID: 1781874635}
+  - component: {fileID: 1781874636}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -597,3 +619,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.34006, y: 3.3899999}
   m_EdgeRadius: 0
+--- !u!114 &1781874636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781874632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01831719e1de41348bc02744ad0ac647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
