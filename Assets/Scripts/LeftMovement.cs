@@ -36,7 +36,13 @@ public class LeftMovement : MonoBehaviour
                 transform.position = new Vector2(transform.position.x + 2 * groundWhidht, transform.position.y); //Bu kod parçasý, bir nesnenin belirli bir hýzda sola doðru hareket etmesini ve bir sýnýra ulaþtýðýnda saða kaydýrýlmasýný saðlar.
             }
         }
-
+        else if (gameObject.CompareTag("Obstacle"))
+        {
+            if (transform.position.x< GameManager.bottomleft.x - obstacleWhite)
+            {
+                Destroy(gameObject);
+            }
+        }
         
     }
 }
