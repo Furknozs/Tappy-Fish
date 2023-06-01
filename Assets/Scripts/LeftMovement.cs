@@ -27,7 +27,11 @@ public class LeftMovement : MonoBehaviour
    
     void Update()
     {
-       transform.position =new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y); // Bu satýr, nesnenin konumunu günceller. Nesnenin x konumu, mevcut x konumu (transform.position.x) üzerinden speed deðeri ile çarpýlarak ve zamanla çarpýlarak (Time.deltaTime) güncellenir. Bu sayede nesne belirli bir hýzda sola doðru hareket eder.
+        if (GameManager.gameOver == false)
+        {
+            transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y); // Bu satýr, nesnenin konumunu günceller. Nesnenin x konumu, mevcut x konumu (transform.position.x) üzerinden speed deðeri ile çarpýlarak ve zamanla çarpýlarak (Time.deltaTime) güncellenir. Bu sayede nesne belirli bir hýzda sola doðru hareket eder.
+        }
+       
 
         if (gameObject.CompareTag("Ground"))
         {

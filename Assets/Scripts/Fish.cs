@@ -10,36 +10,63 @@ public class Fish : MonoBehaviour
     int maxAngel = 20;
     int minAngel = -60;
     public Score score;
+    public GameManager gameManager;
+    bool touchedGround;
+    public Sprite fishDead;
+    SpriteRenderer sp;
+    Animator anim;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
+        sp = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
  
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            _rb.velocity = new Vector2(_rb.velocity.x,speed); // x deðeri sabit y deðeri speed
-        }
 
-        if (_rb.velocity.y >0)    // açý ayarlamasý 
+        FishSwim();
+        
+         
+    }
+
+    private void FixedUpdate()
+    {
+        FishRotation();
+    }
+
+    void FishSwim()
+    {
+        if (Input.GetMouseButtonDown(0)&& GameManager.gameOver == false)
         {
-            if (angel<= maxAngel)
+            _rb.velocity = Vector2.zero;
+            _rb.velocity = new Vector2(_rb.velocity.x, speed); // x deðeri sabit y deðeri speed
+        }
+    }
+
+    void FishRotation()
+    {
+        if (_rb.velocity.y > 0)    // açý ayarlamasý 
+        {
+            if (angel <= maxAngel)
             {
                 angel = angel + 4;
             }
         }
 
-        else if (_rb.velocity.y <-2.5f)
+        else if (_rb.velocity.y < -2.5f)
         {
             if (angel > minAngel)
             {
                 angel = angel - 2;
             }
         }
-        transform.rotation = Quaternion.Euler(0, 0, angel); 
+        if (touchedGround == false)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, angel);
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,6 +75,33 @@ public class Fish : MonoBehaviour
         {
             score.Scored();
         }
+        else if (collision.CompareTag("Column"))
+        {
+            // gameover
+            gameManager.GameOver();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            if (GameManager.gameOver == false)
+            {
+                //gameover
+                gameManager.GameOver();
+                GameOver();
+            }
+           
+        }
+    }
+
+    void GameOver()
+    {
+        touchedGround = true;
+        sp.sprite = fishDead;
+        anim.enabled = false;
+        transform.rotation = Quaternion.Euler(0, 0, -90);
     }
 
 
